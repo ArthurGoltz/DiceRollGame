@@ -2,8 +2,8 @@
 var diceGame = new DiceGame();
 
 diceGame.StartGame();
-
-diceGame.Result(diceGame.NumberOfTries);
+var numberOfTriesLeft = diceGame.Play();
+diceGame.Result(numberOfTriesLeft);
 
 
 
@@ -31,7 +31,7 @@ class DiceGame
         return Console.ReadLine();
     }
 
-    public void Play()
+    public int Play()
     {
         var diceRoll = _dice.Roll();
         Console.WriteLine($"Dice rolled. Guess what number it shows in {NumberOfTries} tries: ");
@@ -50,6 +50,7 @@ class DiceGame
 
             --triesLeft;
         }
+        return triesLeft;
     }
 
     public void Result(int numberOfTries)
